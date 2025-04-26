@@ -1,0 +1,15 @@
+runtime: python
+env: flex
+entrypoint: gunicorn -k eventlet -w 1 main_production:app
+
+runtime_config:
+  python_version: 3
+
+manual_scaling:
+  instances: 1  # Adjust based on your needs
+
+network:
+  session_affinity: true
+
+env_variables:
+  SECRET_KEY: "f8470y009Pi1Nw7LFW36Q9P702rCEr"

@@ -1,0 +1,8 @@
+Flask==1.1.2
+flask-socketio
+eventlet
+python-socketio[client]
+diff-match-patch
+gevent
+gevent-websocket
+gunicorn

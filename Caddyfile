@@ -1,8 +1,8 @@
 {
-  email joseph@tutorspace.app
+    email joseph@tutorspace.app
 }
 
 whiteboard.tutorspace.app {
-  reverse_proxy /socket.io* backend:5000
-  reverse_proxy /*          backend:5000
+    reverse_proxy /socket.io* backend:5000
+    reverse_proxy /*          backend:5000
 }

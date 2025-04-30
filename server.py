@@ -153,11 +153,9 @@ def handle_undo(data):
     if not sess or not sess['undo_stack']:
         return  # nothing to undo
 
-    # ▶ move current state to redo, pop last undo state
-    _push_history(sess['redo_stack'], sess['paths'].copy())
-    sess['paths'] = sess['undo_stack'].pop()
+   
 
-    emit('paths_update', {'paths': sess['paths']}, room=session_code)
+    emit('undo', {'paths': sess['paths']}, room=session_code)
 
 @socketio.on('redo_request')
 def handle_redo(data):
@@ -166,10 +164,9 @@ def handle_redo(data):
     if not sess or not sess['redo_stack']:
         return  # nothing to redo
 
-    _push_history(sess['undo_stack'], sess['paths'].copy())
-    sess['paths'] = sess['redo_stack'].pop()
 
-    emit('paths_update', {'paths': sess['paths']}, room=session_code)
+
+    emit('redo', {'paths': sess['paths']}, room=session_code)
 
 # --------------------------------------------------------------------
 # Misc
